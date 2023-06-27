@@ -1,76 +1,86 @@
 import { dictionary } from "./dictionary.js";
-import {
-  // readJSON,
-  convertData,
-  inputValidator,
-  engToMorse,
-  morseToEng,
-  runTranslator,
-} from "./translator.js";
+import { convertData } from "./helpers.js";
+import { engToMorse, morseToEng, handleTranslator } from "./translator.js";
 
-// describe("Testing readJSON() function", () => {
-//   // read the json file correctly
-//   it("works with async/await", async() => {
-//     expect.assertion(2)
-//     const data = await.
-//   });
-// });
-
-describe("Testing convertData() function", () => {
-  const obj = { A: ".-", B: "-..." };
-  const convertedObj = {
-    ".-": "A",
-    "-...": "B",
-  };
-  it("swaps key-value pair of the given object", () => {
-    expect(convertData({ a: "alph", b: "beta" })).toEqual({
-      alph: "a",
-      beta: "b",
-    });
-    // expect(convertData(obj)).toEqual(convertedObj);
-  });
-});
-
-describe("Testing inputValidator() function", () => {
-  // check if the input is valid
-  const errorMsg = "Your input should be either English or Morse code";
-  it("throws an error if the input is not a string", () => {
-    expect(() => {
-      inputValidator(true);
-    }).toThrow(errorMsg);
-    expect(() => {
-      inputValidator(123);
-    }).toThrow(errorMsg);
-    expect(() => {
-      inputValidator(["abc"]);
-    }).toThrow(errorMsg);
-    expect(() => {
-      inputValidator({ abc: "abc" });
-    }).toThrow(errorMsg);
-  });
-});
+const norseToEngDict = convertData(dictionary);
 
 describe("Testing engToMorse() function", () => {
-  // return a correct value
-  const inputStr = "hi there";
+  const strWithSpace = "hi there";
+  const strWithSpaceInMorse = ".... .. / - .... . .-. .";
+  const numsInStr = "1234";
+  const numsInStrInMorse = ".---- ..--- ...-- ....-";
+  const strWithSpecialChars = "jungah@gmail.com";
+  const strWithSpecialCharsInMorse =
+    ".--- ..- -. --. .- .... .--.-. --. -- .- .. .-.. .-.-.- -.-. --- --";
+  const complexStr = "how are you? i'm doing great!";
+  const complexStrInMorse =
+    ".... --- .-- / .- .-. . / -.-- --- ..- ..--.. / .. .----. -- / -.. --- .. -. --. / --. .-. . .- - -.-.--";
+
+  const otherSpecialChars = "abc&#-*@!word";
+  const otherSpecialCharsInMorse = "";
+
   it("returns a correct morse code depending on the input", () => {
-    expect(engToMorse(dictionary, inputStr)).toBe(".... ..    - .... . .-. .");
+    expect(engToMorse(strWithSpace, dictionary)).toBe(strWithSpaceInMorse);
   });
-  // it("has a single space between alphabets", () => {
-  //   expect(engToMorse(dictionary, inputStr)).toBe();
-  // });
-  // it("has ' / ' between words", () => {
-  //   expect(engToMorse(dictionary, inputStr)).toBe();
-  // });
-});
-describe("Testing morseToEng() function", () => {
-  // return a correct value
-  it("returns a string in English depending on the input", () => {
-    expect(morseToEng);
+  it("translates numbers into morse code without passing a dictionary", () => {
+    expect(engToMorse(numsInStr)).toBe(numsInStrInMorse);
+  });
+  it("translates letters with special characters into morse code", () => {
+    expect(engToMorse(strWithSpecialChars)).toBe(strWithSpecialCharsInMorse);
+    expect(engToMorse(complexStr)).toBe(complexStrInMorse);
+  });
+  it("removes invalid special characters and translates only valid letters", () => {
+    expect(engToMorse(otherSpecialChars).toBe(otherSpecialCharsInMorse));
   });
 });
 
-describe("Testing runTranslator() function", () => {
+describe("Testing morseToEng() function", () => {
+  it("translates morse code into alphabets", () => {
+    const morseWithSpace = ".... . .-.. .--. / -- .";
+    const morseWithSpaceInEng = "help me";
+    expect(morseToEng(morseWithSpace, norseToEngDict)).toBe(
+      morseWithSpaceInEng
+    );
+  });
+
+  it("translates morse code into numbers", () => {
+    const phoneNumber =
+      "----- ....- ----. ----- / .---- ..--- ...-- / .---- ..--- ...-- ....-";
+    expect(morseToEng(phoneNumber, norseToEngDict)).toBe("0490 123 1234");
+  });
+  it("translates morse code into special charactors", () => {
+    const specialChars =
+      ".-.-.- --..-- ..--.. -.-.-- -....- .----. -..-. .--.-. -.--. -.--.-";
+    const letters =
+      ".... .. -.-.-- / .. .----. -- / .--.-. ... -.-- -.. -. . -.--";
+    expect(morseToEng(specialChars, norseToEngDict)).toBe(".,?!-'/@()");
+    expect(morseToEng(letters, norseToEngDict)).toBe("hi! i'm @sydney");
+  });
+});
+
+xdescribe("Testing handleTranslator() function", () => {
+  const inputEng = "Hello World";
+  // const validatedInput = "hello world";
+  const inputMorse = ".... . .-.. .-.. --- / .-- --- .-. .-.. -..";
+
+  jest.mock("./translator", () => ({
+    engToMorse: jest.fn(),
+    morseToEng: jest.fn(),
+  }));
+
+  const engToMorse = jest.fn();
+
+  it("calls engToMorse(), if the input is in English", () => {
+    handleTranslator(inputEng);
+    expect(engToMorse).toHaveBeenCalledWith(inputEng);
+    // expect(morseToEng, norseToEngDict).not.toHaveBeenCalled();
+  });
+  it("calls morseToEng(), if the input is in morse code", () => {
+    // handleTranslator(inputMorse);
+    // expect(morseToEng, norseToEngDict).toHaveBeenCalled();
+    // expect(engToMorse).not.toHaveBeenCalled();
+  });
+
   // it("calls inputValidator(), once it has been called with the input value", () => {
   //   // const mockValidator = jest.fn();
   //   const inputLetters = "abc";

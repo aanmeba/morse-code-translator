@@ -1,0 +1,82 @@
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.fields__field {
+  width: 400px;
+  height: 150px;
+  border-radius: 0.3rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+.fields__field--input {
+  border: 1px solid black;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  resize: none;
+}
+.fields__field--output {
+  background-color: rgb(237, 237, 237);
+}
+.fields__label {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+.fields small {
+  font-size: 0.7rem;
+}
+.fields small span {
+  display: block;
+}
+.fields small span code {
+  background-color: rgb(237, 237, 237);
+  color: hotpink;
+  border-radius: 0.2rem;
+  padding: 1px 3px;
+}
+@media screen and (min-width: 1040px) {
+  .fields small {
+    order: 2;
+  }
+}
+
+.footer {
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer__github {
+  font-size: 1.2rem;
+  color: hotpink;
+}
+.footer__copyright {
+  color: rgb(184, 184, 184);
+  font-size: 0.8rem;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 80vw;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */
