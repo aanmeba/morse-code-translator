@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script defer type="module" src="./index.js"></script>
+    <title>Morse Code Translator</title>
+  </head>
+  <body>
+    <header>
+      <h1>Morse Code Translator</h1>
+    </header>
+    <main>
+      <section class="container">
+        <div class="fields">
+          <p class="fields__label">Input</p>
+          <small
+            >You can only use alphabets, numbers, and the following special
+            characters:
+            <span>
+              <code>.</code>
+              <code>,</code>
+              <code>?</code>
+              <code>!</code>
+              <code>-</code>
+              <code>'</code>
+              <code>/</code>
+              <code>@</code>
+              <code>(</code>
+              <code>)</code>
+            </span>
+          </small>
+          <textarea
+            class="fields__field fields__field--input"
+            type="text"
+            id="input"
+            placeholder="Enter text here"
+          ></textarea>
+        </div>
+
+        <div class="fields">
+          <p class="fields__label">Output</p>
+          <div class="fields__field fields__field--output" id="output"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <a
+        class="footer__github"
+        href="https://github.com/aanmeba/morse-code-translator"
+        target="_blank"
+        ><i class="fa-brands fa-github"></i
+      ></a>
+
+      <p class="footer__copyright">Created by Jungah Ahn 2023</p>
+    </footer>
+  </body>
+</html>

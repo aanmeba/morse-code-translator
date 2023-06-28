@@ -1,0 +1,21 @@
+@use "./fields.scss";
+@use "./footer.scss";
+@use "./common.scss" as t;
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+
+  @include t.flex-column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 80vw;
+}

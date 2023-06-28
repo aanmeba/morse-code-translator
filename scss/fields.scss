@@ -1,0 +1,52 @@
+@use "./common.scss" as t;
+
+.fields {
+  @include t.flex-column;
+  gap: 0.5rem;
+
+  &__field {
+    width: 400px;
+    height: 150px;
+    border-radius: 0.3rem;
+
+    box-sizing: border-box;
+    padding: 1rem;
+    font-size: 1.1rem;
+
+    &--input {
+      border: 1px solid t.$dark;
+      font-family: "Roboto", sans-serif;
+      font-weight: 300;
+      resize: none;
+    }
+
+    &--output {
+      background-color: t.$light;
+    }
+  }
+
+  &__label {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+  }
+
+  small {
+    font-size: 0.7rem;
+    span {
+      display: block;
+      code {
+        background-color: t.$light;
+        color: t.$highlight;
+        border-radius: 0.2rem;
+        padding: 1px 3px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1040px) {
+    small {
+      order: 2;
+    }
+  }
+}
