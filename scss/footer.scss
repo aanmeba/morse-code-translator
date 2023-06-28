@@ -1,20 +1,21 @@
+@use "./common.scss" as t;
+
 .footer {
   text-align: center;
   width: 100%;
-  height: 100px;
+  height: 150px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include t.flex-column;
+  justify-content: flex-end;
   align-items: center;
 
   &__github {
     font-size: 1.2rem;
-    color: hotpink;
+    color: t.$highlight;
   }
 
   &__copyright {
-    color: rgb(184, 184, 184);
     font-size: 0.8rem;
+    color: t.$gray;
   }
 }

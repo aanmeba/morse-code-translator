@@ -1,4 +1,4 @@
-import { convertData, dictionaryToLowerCase, inputValidator } from "./helpers";
+import { convertData, isMorseCode, validateInput } from "./helpers";
 
 describe("Testing convertData() function", () => {
   const obj = { a: ".-", b: "-..." };
@@ -15,29 +15,29 @@ describe("Testing convertData() function", () => {
   });
 });
 
-describe("Testing inputValidator() function", () => {
-  const errorMsg = "Your input should be either English or Morse code";
-
-  it("throws an error if the input is not a string", () => {
-    expect(() => {
-      inputValidator(true);
-    }).toThrow(errorMsg);
-    expect(() => {
-      inputValidator(123);
-    }).toThrow(errorMsg);
-    expect(() => {
-      inputValidator(["abc"]);
-    }).toThrow(errorMsg);
-    expect(() => {
-      inputValidator({ abc: "abc" });
-    }).toThrow(errorMsg);
+describe("Testing validateInput() function", () => {
+  it("turns an input string into lower case", () => {
+    expect(validateInput("HELLO")).toBe("hello");
+    expect(validateInput("woRlD")).toBe("world");
   });
 
   it("trims whitespaces", () => {
-    expect(inputValidator(" hi there  ")).toBe("hi there");
+    expect(validateInput("  orange ")).toBe("orange");
   });
 
-  it("returns alphbets in lower case", () => {
-    expect(inputValidator("HELLO WORLD")).toBe("hello world");
+  it("removes invalid characters", () => {
+    expect(validateInput("abc&#-*@!word")).toBe("abc-@!word");
+    expect(validateInput("$`heLLO@worLd,./=")).toBe("hello@world,./");
+  });
+});
+
+describe("Testing isMorseCode() function", () => {
+  it("returns true if the input starts with either . or -", () => {
+    expect(isMorseCode("-..-")).toBe(true);
+    expect(isMorseCode(".abc-")).toBe(true);
+  });
+  it("returns false if the input starts with invalid characters", () => {
+    expect(isMorseCode("*-..-")).toBe(false);
+    expect(isMorseCode("135abc-")).toBe(false);
   });
 });

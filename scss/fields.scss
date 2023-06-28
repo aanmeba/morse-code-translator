@@ -1,6 +1,7 @@
+@use "./common.scss" as t;
+
 .fields {
-  display: flex;
-  flex-direction: column;
+  @include t.flex-column;
   gap: 0.5rem;
 
   &__field {
@@ -13,15 +14,14 @@
     font-size: 1.1rem;
 
     &--input {
-      border: 1px solid black;
+      border: 1px solid t.$dark;
       font-family: "Roboto", sans-serif;
       font-weight: 300;
       resize: none;
     }
 
     &--output {
-      background-color: rgb(237, 237, 237);
-      // font-weight: 500;
+      background-color: t.$light;
     }
   }
 
@@ -36,8 +36,8 @@
     span {
       display: block;
       code {
-        background-color: rgb(237, 237, 237);
-        color: hotpink;
+        background-color: t.$light;
+        color: t.$highlight;
         border-radius: 0.2rem;
         padding: 1px 3px;
       }
@@ -45,9 +45,6 @@
   }
 
   @media screen and (min-width: 1040px) {
-    // &__field {
-    //   order: 1;
-    // }
     small {
       order: 2;
     }

@@ -1,0 +1,9 @@
+$light: rgb(237, 237, 237);
+$gray: rgb(184, 184, 184);
+$dark: black;
+$highlight: hotpink;
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
