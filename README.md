@@ -6,6 +6,16 @@ A simple web page that allows users to translate text to Morse code and vice ver
 
 ## Features
 
-- Translate English text to Morse code and vice versa.
-- **Properly handle spaces**: In the Morse code output, a `/` will be used instead of a space between words, and there will be a ` ` (space) between characters.
-- **Validate input**: The application will check the validity of the input and remove any invalid characters.
+- Translation between English text and Morse code in both directions.
+- **Properly handle spaces**: In the Morse code output, a `/` is used instead of a space between words in text, and there is a space between characters.
+- **Validate input**: The application checks the validity of the input and remove any invalid characters.
+- **Responsive design**: The web page is designed with a responsive layout, making it accessible and user-friendly across different devices and screen sizes.
+
+## Screenshots
+
+Desktop
+![](./screenshots/desktop.png)
+
+Mobile
+
+![](./screenshots/mobile.png)
