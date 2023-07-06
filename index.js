@@ -1,11 +1,11 @@
-import { dictionary } from "./js/dictionary.js";
-import { convertData, isMorseCode, validateInput } from "./js/helpers.js";
-import { engToMorse, morseToEng } from "./js/translator.js";
+import { dictionary } from './js/dictionary.js';
+import { convertData, isMorseCode, validateInput } from './js/helpers.js';
+import * as translationModule from './js/translator.js';
 
-const input = document.querySelector("#input");
-const output = document.querySelector("#output");
+const input = document.querySelector('#input');
+const output = document.querySelector('#output');
 
-input.addEventListener("input", () => {
+input.addEventListener('input', () => {
   const morseToEnDict = convertData(dictionary);
   const inputValue = validateInput(input.value);
 
