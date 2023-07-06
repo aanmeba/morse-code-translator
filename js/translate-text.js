@@ -1,5 +1,6 @@
-import { morseToEng, engToMorse } from './translator';
-import { isMorseCode } from './helpers';
+import { morseToEng, engToMorse } from './translator.js';
+import { isMorseCode } from './helpers.js';
 
-export const translateText = (text) =>
-  isMorseCode(text) ? morseToEng(text) : engToMorse(text);
+export const translateText = (text) => {
+  return isMorseCode(text) ? morseToEng(text, morseToEnDict) : engToMorse(text);
+};
