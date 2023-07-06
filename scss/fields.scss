@@ -32,15 +32,25 @@
   }
 
   small {
-    font-size: 0.7rem;
+    max-width: 400px;
+    font-size: 0.9rem;
+
     span {
-      display: block;
+      display: inline-block;
+      margin: 0.5rem 0;
+
       code {
         background-color: t.$light;
         color: t.$highlight;
         border-radius: 0.2rem;
         padding: 1px 3px;
       }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    &__field {
+      width: 300px;
     }
   }
 
