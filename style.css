@@ -26,16 +26,23 @@
   font-weight: 500;
 }
 .fields small {
-  font-size: 0.7rem;
+  max-width: 400px;
+  font-size: 0.9rem;
 }
 .fields small span {
-  display: block;
+  display: inline-block;
+  margin: 0.5rem 0;
 }
 .fields small span code {
   background-color: rgb(237, 237, 237);
   color: hotpink;
   border-radius: 0.2rem;
   padding: 1px 3px;
+}
+@media screen and (max-width: 450px) {
+  .fields__field {
+    width: 300px;
+  }
 }
 @media screen and (min-width: 1040px) {
   .fields small {

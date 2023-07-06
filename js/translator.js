@@ -3,7 +3,7 @@ import { dictionary } from "./dictionary.js";
 export const engToMorse = (value, dict = dictionary) => {
   return value
     .split("")
-    .map((char) => (dict[char] ? dict[char] : char === " " ? "/" : ""))
+    .map((char) => (dict[char] ? dict[char] : ""))
     .join(" ")
     .replace(/  +/g, " ");
 };
